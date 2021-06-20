@@ -1,0 +1,7 @@
+{
+  "name": "brew",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>brew</ion-title>
+    <!-- Hamburger -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Coffee weight</ion-label>
+          <ion-input [(ngModel)]="brew.coffeeWeight" clearInput (change)="calc()"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Water weight</ion-label>
+          <ion-input [(ngModel)]="brew.waterWeight" clearInput (change)="calc()"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Brew weight <br>+ tare ({{tare}}g)</ion-label>
+          <ion-input [(ngModel)]="brewWeightPlusTare" clearInput (change)="calc()"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" *ngIf="brew.tds">TDS</ion-label>
+          <ion-label position="floating" *ngIf="!brew.tds">BRIX</ion-label>
+          <ion-input [(ngModel)]="tdsBrix" clearInput (change)="calc()"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <p>Brew ratio : 1/{{brew.waterWeight/brew.coffeeWeight | number:'1.0-2'}}</p>
+        <p>TDS : {{brew.tdsValue * 100 | number:'1.2-2'}} %</p>
+        <p>BRIX : {{brew.brixValue * 100 | number:'1.2-2'}} %</p>
+        <p>Soluble weight : {{solublesWeight | number:'1.2-2'}} g </p>
+        <p>Soluble yield : {{solublesYield*100 | number:'1.2-2'}} %</p>
+        <p>{{message}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <canvas #brewChart width="100%" height="100"></canvas>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

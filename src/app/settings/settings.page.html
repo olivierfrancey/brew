@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>settings</ion-title>
+    <!-- Hamburger -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Tare</ion-label>
+          <ion-input [(ngModel)]="tare" clearInput (change)="setTare()"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-radio-group [(ngModel)]="tds" (ionChange)="setTds()">
+            <ion-list-header>
+              <ion-label>Refractometer unit</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label>TDS</ion-label>
+              <ion-radio slot="start" value="tds" checked></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>BRIX</ion-label>
+              <ion-radio slot="start" value="brix"></ion-radio>
+            </ion-item>
+
+          </ion-radio-group>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
